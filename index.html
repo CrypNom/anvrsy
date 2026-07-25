@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I ❤ You — Prem & Niruta | Cozy Corner</title>
+<meta name="description" content="A cozy little scrapbook corner of the internet for Prem and Niruta. One year of love & sweet memories.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💖</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Kalam:wght@400;700&family=Quicksand:wght@500;600;700&family=Sacramento&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --cream: #FFF9F2;
+    --cream-2: #FFF1E6;
+    --blush: #FFD6D9;
+    --rose: #E8898D;
+    --rose-deep: #D9666C;
+    --rose-dark: #B54247;
+    --ink: #5C3D31;
+    --ink-soft: #8C6A5E;
+    --gold: #E3B23C;
+    --sage: #A8C3A0;
+    --paper: #FFFDF9;
+    --shadow-soft: rgba(92, 61, 49, 0.12);
+    --shadow-deep: rgba(92, 61, 49, 0.22);
+    --tape-color: rgba(227, 178, 60, 0.45);
+    --washi-green: rgba(168, 195, 160, 0.6);
+    --washi-pink: rgba(255, 214, 217, 0.8);
+  }
+
+  body.night-mode {
+    --cream: #2B1E1A;
+    --cream-2: #1F1512;
+    --blush: #4A282A;
+    --rose: #D9666C;
+    --rose-deep: #FF8A90;
+    --rose-dark: #FFB3B7;
+    --ink: #F5E6DF;
+    --ink-soft: #D1B5A9;
+    --gold: #F0C453;
+    --sage: #7A9A72;
+    --paper: #362622;
+    --shadow-soft: rgba(0, 0, 0, 0.3);
+    --shadow-deep: rgba(0, 0, 0, 0.5);
+    --tape-color: rgba(240, 196, 83, 0.35);
+    --washi-green: rgba(122, 154, 114, 0.4);
+    --washi-pink: rgba(217, 102, 108, 0.4);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    min-height:100vh;
+    background:
+      radial-gradient(circle at 12px 12px, rgba(232,137,141,.12) 2px, transparent 2.5px),
+      linear-gradient(180deg, var(--cream) 0%, var(--cream-2) 100%);
+    background-size: 28px 28px, 100% 100%;
+    font-family:'Quicksand', sans-serif;
+    color:var(--ink);
+    overflow-x:hidden;
+    position:relative;
+    transition: background 0.5s ease, color 0.5s ease;
+  }
+
+  a{color:inherit; text-decoration:none;}
+
+  /* ---------- floating hearts ---------- */
+  .heart-field{position:fixed; inset:0; pointer-events:none; overflow:hidden; z-index:0;}
+  .heart-field span{
+    position:absolute; bottom:-10%;
+    font-size:1.3rem; opacity:.35;
+    animation:float-up linear infinite;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+  }
+  @keyframes float-up{
+    0%{ transform:translateY(0) rotate(0deg) scale(0.8); opacity:0; }
+    15%{ opacity:.5; }
+    85%{ opacity:.4; }
+    100%{ transform:translateY(-115vh) rotate(35deg) scale(1.2); opacity:0; }
+  }
+
+  /* ---------- topbar ---------- */
+  .topbar{
+    position:relative; z-index:10;
+    display:flex; justify-content:space-between; align-items:center;
+    padding:1.2rem 2rem;
+    font-family:'Kalam', cursive;
+    font-size:1rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .topbar .badge{
+    background:var(--paper);
+    border:1.5px dashed var(--rose);
+    padding:.4rem 1rem;
+    border-radius:999px;
+    box-shadow: 0 4px 12px var(--shadow-soft);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .theme-toggle{
+    background: var(--paper);
+    border: 1.5px solid var(--rose);
+    color: var(--ink);
+    padding: 0.4rem 0.9rem;
+    border-radius: 999px;
+    cursor: pointer;
+    font-family: 'Kalam', cursive;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 12px var(--shadow-soft);
+    transition: all 0.2s ease;
+  }
+  .theme-toggle:hover{ transform: scale(1.05); }
+
+  main{position:relative; z-index:2;}
+
+  /* ---------- hero ---------- */
+  .hero{
+    text-align:center;
+    padding:2.5rem 1.2rem 1.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .hero .tape{
+    display:inline-block;
+    background: var(--tape-color);
+    padding:.3rem 1.6rem;
+    font-family:'Kalam', cursive;
+    font-size:.95rem;
+    color: var(--ink);
+    transform:rotate(-2.5deg);
+    box-shadow:0 3px 8px rgba(0,0,0,.06);
+    margin-bottom:.8rem;
+    border-left: 2px dashed rgba(0,0,0,0.1);
+    border-right: 2px dashed rgba(0,0,0,0.1);
+  }
+  .hero h1{
+    font-family:'Caveat', cursive;
+    font-weight:700;
+    font-size:clamp(3.5rem, 11vw, 6.8rem);
+    line-height:.92;
+    margin:.2rem 0;
+    color:var(--rose-deep);
+    text-shadow:3px 3px 0 var(--paper);
+  }
+  .hero h1 .beat{
+    display:inline-block;
+    animation:beat 1.2s ease-in-out infinite;
+    color: #E63946;
+  }
+  @keyframes beat{
+    0%,100%{transform:scale(1);}
+    50%{transform:scale(1.22);}
+  }
+  .hero p.sub{
+    font-family:'Kalam', cursive;
+    font-size:1.3rem;
+    color:var(--ink-soft);
+    margin:.5rem 0 0;
+  }
+
+  /* Love Counter Banner */
+  .love-counter{
+    display: inline-flex;
+    gap: 1.2rem;
+    background: var(--paper);
+    padding: 0.7rem 1.5rem;
+    border-radius: 50px;
+    margin-top: 1.2rem;
+    box-shadow: 0 8px 20px var(--shadow-soft);
+    border: 1px solid rgba(232,137,141,0.3);
+    font-family: 'Kalam', cursive;
+    font-size: 0.95rem;
+  }
+  .counter-unit span {
+    font-family: 'Caveat', cursive;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--rose-deep);
+  }
+
+  /* ---------- corkboard gallery ---------- */
+  .board-header {
+    text-align: center;
+    margin-top: 2.5rem;
+    margin-bottom: -1rem;
+  }
+  .board-header h2 {
+    font-family: 'Caveat', cursive;
+    font-size: 2.8rem;
+    color: var(--rose-deep);
+    margin: 0;
+  }
+  .board-header p {
+    font-family: 'Kalam', cursive;
+    color: var(--ink-soft);
+    margin-top: 0.2rem;
+  }
+
+  .board{
+    max-width:1150px;
+    margin:2rem auto 2rem;
+    padding:1rem 1.2rem;
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap:2rem 1.5rem;
+    align-items: start;
+  }
+
+  .polaroid{
+    background:var(--paper);
+    padding:.7rem .7rem 1.8rem;
+    box-shadow:0 12px 24px var(--shadow-deep);
+    position:relative;
+    font-family:'Kalam', cursive;
+    transition:transform .3s ease, box-shadow .3s ease;
+    border-radius: 2px;
+  }
+  .polaroid:hover{
+    transform:translateY(-8px) rotate(0deg) scale(1.04) !important;
+    box-shadow:0 20px 32px var(--shadow-deep);
+    z-index:10;
+  }
+  .polaroid .img-container {
+    width: 100%;
+    height: 230px;
+    overflow: hidden;
+    background: var(--blush);
+    border-radius: 2px;
+    position: relative;
+  }
+  .polaroid img{
+    width:100%; height:100%; object-fit:cover; display:block;
+    transition: transform 0.5s ease;
+  }
+  .polaroid:hover img {
+    transform: scale(1.05);
+  }
+  .polaroid figcaption{
+    text-align:center;
+    padding-top:.8rem;
+    font-size:1.1rem;
+    color:var(--ink);
+    line-height: 1.3;
+  }
+  .polaroid .tag-date {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--ink-soft);
+    margin-top: 0.2rem;
+  }
+  .polaroid .washi{
+    position:absolute; top:-12px; left:50%; transform:translateX(-50%) rotate(-3deg);
+    width:75px; height:24px;
+    background: var(--washi-green);
+    box-shadow:0 2px 4px rgba(0,0,0,.08);
+    z-index: 2;
+  }
+  .polaroid .washi.pink { background: var(--washi-pink); }
+  .polaroid .washi.gold { background: var(--tape-color); }
+
+  /* Unique polaroid tilts */
+  .polaroid:nth-child(1){ transform: rotate(-4deg); }
+  .polaroid:nth-child(2){ transform: rotate(3deg); margin-top: 0.8rem; }
+  .polaroid:nth-child(3){ transform: rotate(-2deg); }
+  .polaroid:nth-child(4){ transform: rotate(5deg); margin-top: 1rem; }
+  .polaroid:nth-child(5){ transform: rotate(-3deg); }
+  .polaroid:nth-child(6){ transform: rotate(4deg); margin-top: 0.5rem; }
+  .polaroid:nth-child(7){ transform: rotate(-5deg); }
+  .polaroid:nth-child(8){ transform: rotate(2deg); margin-top: 0.9rem; }
+  .polaroid:nth-child(9){ transform: rotate(-3deg); }
+
+  /* Sticker / Sticky Notes */
+  .sticker-note{
+    font-family:'Kalam', cursive;
+    font-size:.95rem;
+    color:var(--rose-dark);
+    background:var(--blush);
+    border-radius:50%;
+    width:85px; height:85px;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center;
+    box-shadow:0 8px 18px var(--shadow-soft);
+    align-self:center;
+    margin: 0 auto;
+    line-height: 1.2;
+    padding: 0.5rem;
+  }
+  .sticker-note.tilt-a{transform:rotate(-10deg);}
+  .sticker-note.tilt-b{transform:rotate(12deg); background:var(--sage); color:#2E4A28;}
+  .sticker-note.tilt-c{transform:rotate(-8deg); background:var(--gold); color:#5C3D31;}
+
+  /* ---------- Love Notes / Flip Envelopes Section ---------- */
+  .notes-section {
+    max-width: 900px;
+    margin: 3.5rem auto 2rem;
+    padding: 0 1.2rem;
+    text-align: center;
+  }
+  .notes-section h2 {
+    font-family: 'Caveat', cursive;
+    font-size: 2.8rem;
+    color: var(--rose-deep);
+    margin-bottom: 0.3rem;
+  }
+  .notes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.8rem;
+  }
+  .note-card {
+    background: var(--paper);
+    border: 2px dashed var(--rose);
+    border-radius: 18px;
+    padding: 1.5rem;
+    box-shadow: 0 8px 20px var(--shadow-soft);
+    text-align: left;
+    position: relative;
+    transition: transform 0.25s ease;
+  }
+  .note-card:hover { transform: translateY(-4deg); }
+  .note-card h3 {
+    font-family: 'Caveat', cursive;
+    font-size: 1.8rem;
+    color: var(--rose-deep);
+    margin: 0 0 0.5rem;
+  }
+  .note-card p {
+    font-family: 'Kalam', cursive;
+    font-size: 1rem;
+    color: var(--ink);
+    line-height: 1.5;
+    margin: 0;
+  }
+  .note-card .icon-pin {
+    position: absolute;
+    top: -12px; right: 20px;
+    font-size: 1.4rem;
+  }
+
+  /* ---------- kiss section ---------- */
+  .kiss-section{
+    text-align:center;
+    padding:3rem 1.2rem 2rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .kiss-section h2{
+    font-family:'Caveat', cursive;
+    font-size:clamp(2.4rem, 6vw, 3.5rem);
+    color:var(--rose-deep);
+    margin:0 0 .3rem;
+  }
+  .kiss-section p{
+    font-family:'Kalam', cursive;
+    color:var(--ink-soft);
+    margin:0 0 1.5rem;
+    font-size: 1.1rem;
+  }
+  .kiss-btn{
+    font-family:'Kalam', cursive;
+    font-size:1.5rem;
+    background:linear-gradient(135deg, var(--rose) 0%, var(--rose-deep) 100%);
+    color:#fff;
+    border:none;
+    border-radius:999px;
+    padding:1.1rem 2.8rem;
+    cursor:pointer;
+    box-shadow:0 12px 26px rgba(217,102,108,.45);
+    transition:transform .15s ease, box-shadow .2s ease;
+  }
+  .kiss-btn:hover{transform:scale(1.08) rotate(-1.5deg); box-shadow:0 16px 32px rgba(217,102,108,.55);}
+  .kiss-btn:active{transform:scale(.95);}
+
+  .kiss-counter-badge {
+    margin-top: 1rem;
+    font-family: 'Kalam', cursive;
+    font-size: 1rem;
+    color: var(--rose-deep);
+  }
+
+  .kiss-fly{
+    position:fixed; z-index:100; pointer-events:none;
+    font-size:2rem;
+    animation:kiss-up 1.8s ease-out forwards;
+  }
+  @keyframes kiss-up{
+    0%{ transform:translateY(0) scale(.6) rotate(0deg); opacity:1; }
+    100%{ transform:translateY(-340px) scale(1.4) rotate(25deg); opacity:0; }
+  }
+
+  /* ---------- song card ---------- */
+  .song-wrap{
+    max-width:460px;
+    margin:2rem auto 3.5rem;
+    padding:0 1.2rem;
+    text-align:center;
+  }
+  .song-card{
+    background:var(--paper);
+    border:2px dashed var(--rose);
+    border-radius:24px;
+    padding:1.6rem 1.4rem 1.2rem;
+    box-shadow:0 12px 28px var(--shadow-deep);
+  }
+  .song-card .disc{
+    font-size:2.2rem;
+    animation:spin 6s linear infinite;
+    display:inline-block;
+    margin-bottom:.2rem;
+  }
+  @keyframes spin{ to{ transform:rotate(360deg); } }
+  .song-card h3{
+    font-family:'Caveat', cursive;
+    font-size:2.2rem;
+    margin:.1rem 0 0;
+    color:var(--rose-deep);
+  }
+  .song-card .artist{
+    font-family:'Kalam', cursive;
+    color:var(--ink-soft);
+    margin:0 0 1rem;
+    font-size:1rem;
+  }
+  .song-card iframe{
+    width:100%; border-radius:14px; border:none;
+  }
+
+  /* ---------- footer note ---------- */
+  .footer-note{
+    text-align:center;
+    padding:2rem 1.2rem 3.5rem;
+    font-family:'Caveat', cursive;
+    font-size:1.8rem;
+    color:var(--ink-soft);
+  }
+  .footer-note .stamp{
+    display:inline-block;
+    margin-top:.6rem;
+    font-family:'Kalam', cursive;
+    font-size:.95rem;
+    color:var(--rose-deep);
+    border:1.5px solid var(--rose);
+    border-radius:10px;
+    padding:.3rem .9rem;
+    transform:rotate(-3deg);
+    background: var(--paper);
+    box-shadow: 0 4px 10px var(--shadow-soft);
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+  }
+
+  @media (max-width:600px){
+    .board {
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1.2rem 1rem;
+    }
+    .polaroid { padding: .5rem .5rem 1.2rem; }
+    .polaroid .img-container { height: 170px; }
+    .polaroid figcaption { font-size: 0.95rem; padding-top: 0.5rem; }
+    .hero h1 { font-size: 3.8rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="heart-field" id="heart-field"></div>
+
+<div class="topbar">
+  <div class="badge">Prem & Niruta 🎀</div>
+  <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">🌙 Cozy Night</button>
+</div>
+
+<main>
+
+  <section class="hero">
+    <span class="tape">one year of us & endless love</span>
+    <h1>I <span class="beat">❤</span> You</h1>
+    <p class="sub">our cozy little corner filled with sweet memories 💌</p>
+
+    <div class="love-counter">
+      <div class="counter-unit"><span id="daysCount">365</span> days</div>
+      <div class="counter-unit">•</div>
+      <div class="counter-unit"><span>8,760</span> hours</div>
+      <div class="counter-unit">•</div>
+      <div class="counter-unit"><span>∞</span> love</div>
+    </div>
+  </section>
+
+  <div class="board-header">
+    <h2>Our Storybook Gallery 📸</h2>
+    <p>every picture holds a million feelings</p>
+  </div>
+
+  <section class="board" aria-label="photo corkboard">
+
+    <!-- Image 1 -->
+    <figure class="polaroid">
+      <div class="washi"></div>
+      <div class="img-container">
+        <img src="assets/images/gallery-01.png" alt="hugged tightly together childhood memories">
+      </div>
+      <figcaption>Where it all began 🧸<span class="tag-date">little us & big hugs</span></figcaption>
+    </figure>
+
+    <!-- Sticker Note -->
+    <div class="sticker-note tilt-a">mwah<br>💋<br>forever</div>
+
+    <!-- Image 2 -->
+    <figure class="polaroid">
+      <div class="washi pink"></div>
+      <div class="img-container">
+        <img src="assets/images/gallery-02.jpg" alt="kiss under cap at night">
+      </div>
+      <figcaption>Secret kisses 🌙<span class="tag-date">under the night sky</span></figcaption>
+    </figure>
+
+    <!-- Image 3 -->
+    <figure class="polaroid">
+      <div class="washi gold"></div>
+      <div class="img-container">
+        <img src="assets/images/gallery-03.jpg" alt="school uniform colorful shirt writing">
+      </div>
+      <figcaption>School days 🎨<span class="tag-date">colorful shirts & laughs</span></figcaption>
+    </figure>
+
+    <!-- Image 4 -->
+    <figure class="polaroid">
+      <div class="washi"></div>
+      <div class="img-container">
+        <img src="assets/images/gallery-04.jpg" alt="wearing red saree looking lovingly">
+      </div>
+      <figcaption>Dressed up in red 🌹<span class="tag-date">you look breathtaking</span></figcaption>
+    </figure>
+
+    <!-- Sticker Note -->
+    <div class="sticker-note tilt-b">cutie<br>🧸<br>pie</div>
+
+    <!-- Image 5 -->
+    <figure class="polaroid">
+      <div class="washi pink"></div>
+      <div class="img-container">
+        <img src="assets/images/gallery-06.jpg" alt="temple visit winter jackets">
+      </div>
+      <figcaption>Temple blessings 🛕<span class="tag-date">chilly mountain days</span></figcaption>
+    </figure>
+
+    <!-- Image 6 -->
+    <figure class="polaroid">
+      <div class="washi gold"></div>
+      <div class="img-container">
+        <img src="assets/images/gallery-07.jpg" alt="bus travel cozy selfie">
+      </div>
+      <figcaption>Travel silliness 🚌<span class="tag-date">cozy bus ride moments</span></figcaption>
+    </figure>
+
+    <!-- Sticker Note -->
+    <div class="sticker-note tilt-c">yours<br>always<br>✨</div>
+
+    <!-- Image 7 -->
+    <figure class="polaroid">
+      <div class="washi"></div>
+      <div class="img-container">
+        <img src="assets/images/gallery-08.jpg" alt="waterfall background travel picture">
+      </div>
+      <figcaption>Waterfall views 🌊<span class="tag-date">with my favorite person</span></figcaption>
+    </figure>
+
+    <!-- Image 8 -->
+    <figure class="polaroid">
+      <div class="washi pink"></div>
+      <div class="img-container">
+        <img src="assets/images/gallery-09.jpg" alt="temple grounds holding hands with tika">
+      </div>
+      <figcaption>Sunny day out ☀️<span class="tag-date">blessed & peaceful</span></figcaption>
+    </figure>
+
+    <!-- Image 9 -->
+    <figure class="polaroid">
+      <div class="washi gold"></div>
+      <div class="img-container">
+        <img src="assets/images/gallery-11.jpg" alt="holding tight embrace shirt close up">
+      </div>
+      <figcaption>Holding you close 🧥<span class="tag-date">never letting go</span></figcaption>
+    </figure>
+
+  </section>
+
+  <!-- Love Notes Section -->
+  <section class="notes-section">
+    <h2>Sweet Reminders 💌</h2>
+    <div class="notes-grid">
+      <div class="note-card">
+        <span class="icon-pin">📌</span>
+        <h3>Why I Love You</h3>
+        <p>Your smile warms up the coldest days, and being with you feels like home every single moment.</p>
+      </div>
+      <div class="note-card">
+        <span class="icon-pin">📌</span>
+        <h3>Our Promise</h3>
+        <p>To keep exploring new places, laughing at silly jokes, and holding hands through everything.</p>
+      </div>
+      <div class="note-card">
+        <span class="icon-pin">📌</span>
+        <h3>1 Year & Forever</h3>
+        <p>365 days were full of love, magic, and sweet memories. Here's to endless years ahead!</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kiss Interactive Section -->
+  <section class="kiss-section">
+    <h2>Send a Little Kiss</h2>
+    <p>tap as many times as you like! 🎀</p>
+    <button class="kiss-btn" id="kissBtn" type="button">mwah 😘</button>
+    <div class="kiss-counter-badge">Kisses sent today: <span id="kissCount">0</span> 💋</div>
+  </section>
+
+  <!-- Song Section -->
+  <section class="song-wrap">
+    <div class="song-card">
+      <span class="disc">💿</span>
+      <h3>Paper Rings</h3>
+      <p class="artist">our anthem — Taylor Swift</p>
+      <iframe src="https://open.spotify.com/embed/track/4yI1vL9C324m348B4A232?utm_source=generator"
+        height="152" frameborder="0" allowfullscreen=""
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy" title="Paper Rings by Taylor Swift on Spotify"></iframe>
+    </div>
+  </section>
+
+  <p class="footer-note">
+    forever & always yours 🩷<br>
+    <span class="stamp">Prem & Niruta · One Year Anniversary</span>
+  </p>
+
+</main>
+
+<script>
+  // Ambient Floating Hearts
+  (function(){
+    const field = document.getElementById('heart-field');
+    const glyphs = ['💗','💕','🤍','✨','🌸','🧸'];
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(reduce) return;
+    const count = window.innerWidth < 600 ? 12 : 22;
+    for(let i=0;i<count;i++){
+      const s = document.createElement('span');
+      s.textContent = glyphs[Math.floor(Math.random()*glyphs.length)];
+      s.style.left = Math.random()*100 + '%';
+      s.style.fontSize = (0.9 + Math.random()*1.2) + 'rem';
+      const dur = 9 + Math.random()*14;
+      s.style.animationDuration = dur + 's';
+      s.style.animationDelay = (-Math.random()*dur) + 's';
+      field.appendChild(s);
+    }
+  })();
+
+  // Kiss Counter & Confetti
+  let totalKisses = 0;
+  (function(){
+    const btn = document.getElementById('kissBtn');
+    const kissDisplay = document.getElementById('kissCount');
+    const glyphs = ['💋','❤️','💗','✨','🌸'];
+    btn.addEventListener('click', function(e){
+      totalKisses++;
+      kissDisplay.textContent = totalKisses;
+      
+      const rect = btn.getBoundingClientRect();
+      const originX = rect.left + rect.width/2;
+      const originY = rect.top;
+      const n = 12;
+      for(let i=0;i<n;i++){
+        const el = document.createElement('span');
+        el.className = 'kiss-fly';
+        el.textContent = glyphs[Math.floor(Math.random()*glyphs.length)];
+        const spread = (Math.random()-0.5) * 260;
+        el.style.left = (originX + spread) + 'px';
+        el.style.top = originY + 'px';
+        document.body.appendChild(el);
+        setTimeout(() => el.remove(), 1800);
+      }
+    });
+  })();
+
+  // Theme Toggle (Night / Day)
+  function toggleTheme() {
+    document.body.classList.toggle('night-mode');
+    const btn = document.getElementById('themeToggle');
+    if (document.body.classList.contains('night-mode')) {
+      btn.textContent = '☀️ Cozy Day';
+    } else {
+      btn.textContent = '🌙 Cozy Night';
+    }
+  }
+</script>
+
+</body>
+</html>
